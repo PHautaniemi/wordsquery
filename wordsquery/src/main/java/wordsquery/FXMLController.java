@@ -21,10 +21,13 @@ package wordsquery;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.ChoiceBox;
 
 public class FXMLController implements Initializable {
     
@@ -32,11 +35,29 @@ public class FXMLController implements Initializable {
     private Label label;
     
     @FXML
+    private ChoiceBox FromLanguage;
+    
+    @FXML
+    private ChoiceBox ToLanguage;
+    
+    @FXML
     private void handleButtonAction(ActionEvent event) {
         System.out.println("WordsQuery!");
         label.setText("Version 0.1");
     }
     
+    @FXML
+    private void handleFromLanguageChoice(MouseEvent event) {
+        FromLanguage.setItems(FXCollections.observableArrayList("Finnish", "Swedish", "English"));
+    //TODO: Get language settings from Google Translate
+    }
+
+    @FXML
+    private void handleToLanguageChoice(MouseEvent event) {
+        ToLanguage.setItems(FXCollections.observableArrayList("Finnish", "Swedish", "English"));
+    //TODO: Get language settings from Google Translate    
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
