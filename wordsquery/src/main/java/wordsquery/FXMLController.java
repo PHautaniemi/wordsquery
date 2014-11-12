@@ -49,13 +49,13 @@ public class FXMLController implements Initializable {
     @FXML
     private void handleFromLanguageChoice(MouseEvent event) {
         FromLanguage.setItems(FXCollections.observableArrayList("Finnish", "Swedish", "English"));
-    
+    //TODO: Get language settings from Google Translate
     }
 
     @FXML
     private void handleToLanguageChoice(MouseEvent event) {
         ToLanguage.setItems(FXCollections.observableArrayList("Finnish", "Swedish", "English"));
-    
+    //TODO: Get language settings from Google Translate    
     }
 
     @Override
