@@ -32,12 +32,19 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.SplitPane;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TreeTableColumn;
+import javafx.scene.control.TreeTableView;
+import javafx.scene.input.InputMethodEvent;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Sphere;
 import javafx.scene.text.Font;
+import javafx.collections.ObservableList;
 
 public class FXMLController implements Initializable {
     
@@ -59,19 +66,20 @@ public class FXMLController implements Initializable {
     @FXML
     private Font x1;
     @FXML
-    private ListView<?> LeftListChoices;
-    @FXML
     private TextField FromWord;
     @FXML
     private TextField ToWord;
     @FXML
     private Sphere VerdictLamp;
     @FXML
-    private Button Translate;
-    @FXML
     private Color x4;
     @FXML
     private Font x3;
+    @FXML
+    private ListView<?> ResultTextArea;
+    
+    public static int ResultIndex;
+    public static ObservableList ResultData = FXCollections.observableArrayList();
     
     private void handleButtonAction(ActionEvent event) {
         System.out.println("WordsQuery!");
@@ -94,24 +102,66 @@ public class FXMLController implements Initializable {
         FromLanguage.setItems(FXCollections.observableArrayList("Finnish", "Swedish", "English"));
         ToLanguage.getSelectionModel().selectFirst();
         FromLanguage.getSelectionModel().selectFirst();
+    
+        ResultIndex=0;
+        ResultTextArea.setPrefSize(200, 250);
+        
+        
+       // ResultTextArea.appendText("                Query Results              \n");
+       // ResultTextArea.appendText("\n");
         
     }    
 
     @FXML
-    private void TranslateClicked(MouseEvent event) {
-        Translation t = new Translation();
-        String result=t.Translate(FromLanguage.getSelectionModel().getSelectedItem().toString(),
-        ToLanguage.getSelectionModel().getSelectedItem().toString(), FromWord.getText());
-        ToWord.setText(result);
+    private void FromWordKeyPressed(KeyEvent event) {
+        
+        ToWord.setText("");
+        if (event.getCode() == KeyCode.ENTER)
+        {
+              System.out.println("ENTER");
+        }
+
     }
 
     @FXML
-    private void FromWordKeyPressed(KeyEvent event) {
-        /*Translation t = new Translation();
-        String result=t.Translate(FromLanguage.getSelectionModel().getSelectedItem().toString(),
-        ToLanguage.getSelectionModel().getSelectedItem().toString(), FromWord.getText());
-        ToWord.setText(result);*/
+    private void ToWordKeyPressed(KeyEvent event) {
+ 
+        ToWord.setStyle("-fx-text-inner-color: black;");
+        if (event.getCode() == KeyCode.ENTER)
+        {
+            Translation t = new Translation();
+            String result=t.Translate(FromLanguage.getSelectionModel().getSelectedItem().toString(),
+            ToLanguage.getSelectionModel().getSelectedItem().toString(), FromWord.getText());
+            String AnswerText=ToWord.getText();
+            Results r = new Results(ResultData, ResultTextArea);
+            if(r.CheckResult(result, ToWord.getText()))
+            {
+                ToWord.setStyle("-fx-text-inner-color: green;");
+                String s="'"+AnswerText+"' is correct!";
+                ToWord.setText(s);
+                r.SaveResult(FromWord.getText(),AnswerText, true);
+            }  
+            else
+            {
+                ToWord.setStyle("-fx-text-inner-color: red;");
+                System.out.println("result="+result);
+                System.out.println("from="+FromWord.getText()); 
+                if(FromWord.getText().equals(result)){
+                    String s="No word for '"+result+"'";
+                    ToWord.setText(s);
+                    
+                }
+                else
+                {
+                    
+                   String s="'"+AnswerText+"' is wrong! corect answer is '"+result+"'";
+                   ToWord.setText(s);
+                   r.SaveResult(FromWord.getText(),AnswerText, false);
+                }
+            }
         
-        //TODO: 12134
-    }
+        }
+    } 
+    
+ 
 }

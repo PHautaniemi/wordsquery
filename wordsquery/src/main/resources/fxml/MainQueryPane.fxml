@@ -55,7 +55,7 @@
       <items>
         <AnchorPane>
           <children>
-            <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" minWidth="60.0" prefHeight="27.0" prefWidth="106.0" style="&#10;" text="Kielivalinnat" textAlignment="CENTER" wrapText="false">
+            <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" minWidth="60.0" prefHeight="27.0" prefWidth="180.0" style="&#10;" text="WordQuery Results" textAlignment="CENTER" wrapText="false">
               <font>
                 <Font size="18.0" fx:id="x1" />
               </font>
@@ -63,20 +63,19 @@
                 <Color blue="0.624" green="0.624" red="0.624" fx:id="x2" />
               </textFill>
             </Label>
-                  <ListView fx:id="LeftListChoices" layoutX="11.0" layoutY="90.0" prefHeight="551.0" prefWidth="222.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <ListView fx:id="ResultTextArea" layoutY="44.0" prefHeight="502.0" prefWidth="222.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="44.0" />
           </children>
         </AnchorPane>
         <ScrollPane prefHeight="-1.0" prefWidth="-1.0">
           <content>
-            <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="545.0" prefWidth="535.0">
+            <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="545.0" prefWidth="669.0">
               <children>
                 <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" textAlignment="CENTER" textFill="$x2" wrapText="false" />
-                        <TextField fx:id="FromWord" layoutX="50.0" layoutY="118.0" onKeyPressed="#FromWordKeyPressed" />
-                        <TextField fx:id="ToWord" layoutX="289.0" layoutY="118.0" />
-                        <ChoiceBox fx:id="FromLanguage" layoutX="50.0" layoutY="85.0" onMouseClicked="#handleFromLanguageChoice" prefWidth="150.0" />
-                        <ChoiceBox fx:id="ToLanguage" layoutX="289.0" layoutY="85.0" onMouseClicked="#handleToLanguageChoice" prefWidth="150.0" />
-                        <Sphere fx:id="VerdictLamp" layoutX="412.0" layoutY="177.0" opacity="0.71" radius="10.0" />
-                        <Button fx:id="Translate" layoutX="214.0" layoutY="175.0" mnemonicParsing="false" onMouseClicked="#TranslateClicked" text="Translate" />
+                        <TextField fx:id="FromWord" layoutX="16.0" layoutY="118.0" onKeyPressed="#FromWordKeyPressed" prefHeight="16.0" prefWidth="305.0" promptText="Query" />
+                        <TextField fx:id="ToWord" layoutX="348.0" layoutY="118.0" onKeyPressed="#ToWordKeyPressed" prefHeight="16.0" prefWidth="307.0" promptText="Answer" />
+                        <ChoiceBox fx:id="FromLanguage" layoutX="16.0" layoutY="93.0" onMouseClicked="#handleFromLanguageChoice" prefWidth="150.0" />
+                        <ChoiceBox fx:id="ToLanguage" layoutX="505.0" layoutY="93.0" onMouseClicked="#handleToLanguageChoice" prefWidth="150.0" />
+                        <Sphere fx:id="VerdictLamp" layoutX="268.0" layoutY="51.0" opacity="0.71" radius="10.0" />
               </children>
             </AnchorPane>
           </content>
