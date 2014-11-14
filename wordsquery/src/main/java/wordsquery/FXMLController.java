@@ -28,19 +28,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ListView;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.SplitPane;
-import javafx.scene.control.TextField;
-import javafx.scene.input.InputMethodEvent;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Sphere;
-import javafx.scene.text.Font;
-
 
 public class FXMLController implements Initializable {
+    
     @FXML
     private Label label;
     
@@ -49,29 +39,8 @@ public class FXMLController implements Initializable {
     
     @FXML
     private ChoiceBox ToLanguage;
-    @FXML
-    private VBox MainVBox;
-    @FXML
-    private MenuBar MainMenu;
-    @FXML
-    private SplitPane MainVertSplitPane;
-    @FXML
-    private Color x2;
-    @FXML
-    private Font x1;
-    @FXML
-    private ListView<?> LeftListChoices;
-    @FXML
-    private TextField FromWord;
-    @FXML
-    private TextField ToWord;
-    @FXML
-    private Sphere VerdictLamp;
-    @FXML
-    private Color x4;
-    @FXML
-    private Font x3;
     
+    @FXML
     private void handleButtonAction(ActionEvent event) {
         System.out.println("WordsQuery!");
         label.setText("Version 0.1");
@@ -79,41 +48,18 @@ public class FXMLController implements Initializable {
     
     @FXML
     private void handleFromLanguageChoice(MouseEvent event) {
-        FromWord.setDisable(false);
+        FromLanguage.setItems(FXCollections.observableArrayList("Finnish", "Swedish", "English"));
     //TODO: Get language settings from Google Translate
     }
 
     @FXML
     private void handleToLanguageChoice(MouseEvent event) {
-        ToWord.setDisable(false);
-    //TODO: Get language settings from Google Translate
-          
+        ToLanguage.setItems(FXCollections.observableArrayList("Finnish", "Swedish", "English"));
+    //TODO: Get language settings from Google Translate    
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        ToLanguage.setItems(FXCollections.observableArrayList("Finnish", "Swedish", "English"));
-        FromLanguage.setItems(FXCollections.observableArrayList("Finnish", "Swedish", "English"));
-        ToLanguage.getSelectionModel().selectFirst();
-        FromLanguage.getSelectionModel().selectFirst();
+        // TODO
     }    
-
-
-    @FXML
-    private void handleFromWordKeyPressed(KeyEvent event) {
-        /*Translation t = new Translation();
-        String result=t.Translate(FromLanguage.getSelectionModel().getSelectedItem().toString(),
-        ToLanguage.getSelectionModel().getSelectedItem().toString(), FromWord.getText());
-        ToWord.setText(result); */
-    }
-
-    @FXML
-    private void TranslateButtonClicked(MouseEvent event) {
-        Translation t = new Translation();
-        String result=t.Translate(FromLanguage.getSelectionModel().getSelectedItem().toString(),
-        ToLanguage.getSelectionModel().getSelectedItem().toString(), FromWord.getText());
-        ToWord.setText(result);
-       
-    }
-
 }
