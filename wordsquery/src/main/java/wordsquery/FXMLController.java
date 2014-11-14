@@ -33,6 +33,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Sphere;
@@ -102,5 +103,15 @@ public class FXMLController implements Initializable {
         String result=t.Translate(FromLanguage.getSelectionModel().getSelectedItem().toString(),
         ToLanguage.getSelectionModel().getSelectedItem().toString(), FromWord.getText());
         ToWord.setText(result);
+    }
+
+    @FXML
+    private void FromWordKeyPressed(KeyEvent event) {
+        /*Translation t = new Translation();
+        String result=t.Translate(FromLanguage.getSelectionModel().getSelectedItem().toString(),
+        ToLanguage.getSelectionModel().getSelectedItem().toString(), FromWord.getText());
+        ToWord.setText(result);*/
+        
+        
     }
 }
