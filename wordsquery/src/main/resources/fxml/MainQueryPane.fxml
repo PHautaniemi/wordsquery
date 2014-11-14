@@ -71,11 +71,12 @@
             <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="545.0" prefWidth="535.0">
               <children>
                 <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" textAlignment="CENTER" textFill="$x2" wrapText="false" />
-                        <TextField fx:id="FromWord" layoutX="50.0" layoutY="118.0" />
+                        <TextField fx:id="FromWord" layoutX="50.0" layoutY="118.0" onKeyPressed="#handleFromWordKeyPressed" />
                         <TextField fx:id="ToWord" layoutX="289.0" layoutY="118.0" />
-                        <ChoiceBox fx:id="FromLanguage" layoutX="50.0" layoutY="85.0" prefWidth="150.0" onMouseClicked="#handleFromLanguageChoice" />
-                        <ChoiceBox fx:id="ToLanguage" layoutX="289.0" layoutY="85.0" prefWidth="150.0" onMouseClicked="#handleToLanguageChoice" />
+                        <ChoiceBox fx:id="FromLanguage" layoutX="50.0" layoutY="85.0" onMouseClicked="#handleFromLanguageChoice" prefWidth="150.0" />
+                        <ChoiceBox fx:id="ToLanguage" layoutX="289.0" layoutY="85.0" onMouseClicked="#handleToLanguageChoice" prefWidth="150.0" />
                         <Sphere fx:id="VerdictLamp" layoutX="412.0" layoutY="177.0" opacity="0.71" radius="10.0" />
+                        <Button id="TranslateButton" layoutX="216.0" layoutY="187.0" mnemonicParsing="false" onMouseClicked="#TranslateButtonClicked" text="Translate" />
               </children>
             </AnchorPane>
           </content>
