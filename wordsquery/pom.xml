@@ -63,5 +63,16 @@
             </plugin>
         </plugins>
     </build>
-
+    <dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>gtranslateapi-1.0</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>jl1.0</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
 </project>
