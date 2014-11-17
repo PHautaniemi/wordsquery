@@ -60,10 +60,12 @@ public class Results{
          ResultData.add(t);
          ResultTextArea.setItems(ResultData);
      }
-     public boolean CheckResult(String QueryWord,String AnswerWord){
-         
-         if(QueryWord.equals(AnswerWord))
-             return true;
+     public boolean CheckResult(String TranslatedWord, String FromWord, String ToWord){
+         if(TranslatedWord.equals(ToWord))
+             if(FromWord.equals(ToWord))
+                 return false;  /* Word not found from dictionary so both word equals */
+             else
+                 return true;
          else
              return false;
         

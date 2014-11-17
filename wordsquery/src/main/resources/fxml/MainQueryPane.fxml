@@ -46,7 +46,7 @@
         </Menu>
         <Menu mnemonicParsing="false" text="Help">
           <items>
-            <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
+            <MenuItem fx:id="About" mnemonicParsing="false" text="About MyHelloApp" />
           </items>
         </Menu>
       </menus>
@@ -73,9 +73,10 @@
                 <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" textAlignment="CENTER" textFill="$x2" wrapText="false" />
                         <TextField fx:id="FromWord" layoutX="16.0" layoutY="118.0" onKeyPressed="#FromWordKeyPressed" prefHeight="16.0" prefWidth="305.0" promptText="Query" />
                         <TextField fx:id="ToWord" layoutX="348.0" layoutY="118.0" onKeyPressed="#ToWordKeyPressed" prefHeight="16.0" prefWidth="307.0" promptText="Answer" />
-                        <ChoiceBox fx:id="FromLanguage" layoutX="16.0" layoutY="93.0" onMouseClicked="#handleFromLanguageChoice" prefWidth="150.0" />
-                        <ChoiceBox fx:id="ToLanguage" layoutX="505.0" layoutY="93.0" onMouseClicked="#handleToLanguageChoice" prefWidth="150.0" />
+                        <ChoiceBox fx:id="FromLanguage" layoutX="16.0" layoutY="93.0" prefWidth="150.0" />
+                        <ChoiceBox fx:id="ToLanguage" layoutX="505.0" layoutY="93.0" prefWidth="150.0" />
                         <Sphere fx:id="VerdictLamp" layoutX="268.0" layoutY="51.0" opacity="0.71" radius="10.0" />
+                        <Button fx:id="AddToList" layoutX="348.0" layoutY="160.0" mnemonicParsing="false" onMouseReleased="#AddToListReleased" text="Add to list" visible="false" />
               </children>
             </AnchorPane>
           </content>
