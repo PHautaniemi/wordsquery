@@ -78,16 +78,22 @@ public class FXMLController implements Initializable {
     @FXML
     private ListView<?> ResultTextArea;
     @FXML
-    private Button AddToList;
+    private Button AddOwnToList;
     
+    String AnswerText;
     public static int ResultIndex;
     public static ObservableList ResultData = FXCollections.observableArrayList();
     
-  
+    /**
+    * This method enables user to add different word to Results list 
+    * than translate returned. Button is visible only when this is needed.
+    */
     @FXML
-    private void AddToListReleased(MouseEvent event) {
-    //TODO: Get incorrect answers added to Results word list
-        AddToList.setVisible(false);
+    private void AddOwnToListReleased(MouseEvent event) {
+        Results r = new Results(ResultData, ResultTextArea);
+        r.SaveResult(FromWord.getText(),AnswerText, true);
+        AddOwnToList.setVisible(false);
+        FromWord.requestFocus();
     }
     
     @Override
@@ -126,7 +132,7 @@ public class FXMLController implements Initializable {
             Translation t = new Translation();
             String result=t.Translate(FromLanguage.getSelectionModel().getSelectedItem().toString(),
             ToLanguage.getSelectionModel().getSelectedItem().toString(), FromWord.getText());
-            String AnswerText=ToWord.getText();
+            AnswerText=ToWord.getText();
             Results r = new Results(ResultData, ResultTextArea);
             if(r.CheckResult(result, FromWord.getText(), ToWord.getText()))
             {
@@ -134,22 +140,24 @@ public class FXMLController implements Initializable {
                 String s="'"+AnswerText+"' is correct!";
                 ToWord.setText(s);
                 r.SaveResult(FromWord.getText(),AnswerText, true);
+                FromWord.requestFocus();
             }  
             else
             {
-                AddToList.setVisible(true);
                 ToWord.setStyle("-fx-text-inner-color: red;");
                 System.out.println("result="+result);
                 System.out.println("from="+FromWord.getText()); 
                 if(FromWord.getText().equals(result)){
                     String s="No word for '"+result+"'";
                     ToWord.setText(s);
+                    AddOwnToList.setVisible(true);
                 }
                 else
                 {
                    String s="'"+AnswerText+"' is wrong! corect answer is '"+result+"'";
                    ToWord.setText(s);
-                   r.SaveResult(FromWord.getText(),AnswerText, false);
+                   // r.SaveResult(FromWord.getText(),AnswerText, false);
+                   AddOwnToList.setVisible(true);
                 }
             }
         
