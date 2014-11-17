@@ -18,6 +18,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ***********************************************************************/
 package wordsquery;
 
+import java.awt.Font;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ListView;
@@ -43,32 +44,21 @@ public class Results{
      }
      public void SaveResult(String QueryWord, String AnswerWord, boolean Result){ 
         
-        
-        if(Result)
-        {
-            String s=QueryWord+" -> "+AnswerWord+"\n";
-            final Text t = TextBuilder.create()
+         String s=QueryWord+" -> "+AnswerWord+"\n";
+         final Text t = TextBuilder.create()
             .text(s)
             .x(50).y(50)
-            .fill(Color.GREEN)
             .build(); 
-           
-           ResultData.add(t);
-           ResultTextArea.setItems(ResultData);
-
-        }
-        else
-        {
-           String s=QueryWord+" -> "+AnswerWord+"\n";
-            final Text t = TextBuilder.create()
-            .text(s)
-            .x(50).y(50)
-            .fill(Color.RED)
-            .build(); 
-            ResultData.add(t);
-            ResultTextArea.setItems(ResultData);
-        
-        }    
+         if(Result)
+         {           
+             t.setFill(Color.GREEN);
+         }
+         else
+         {
+             t.setFill(Color.RED);
+         }    
+         ResultData.add(t);
+         ResultTextArea.setItems(ResultData);
      }
      public boolean CheckResult(String QueryWord,String AnswerWord){
          
