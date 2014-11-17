@@ -77,25 +77,19 @@ public class FXMLController implements Initializable {
     private Font x3;
     @FXML
     private ListView<?> ResultTextArea;
+    @FXML
+    private Button AddToList;
     
     public static int ResultIndex;
     public static ObservableList ResultData = FXCollections.observableArrayList();
     
-    private void handleButtonAction(ActionEvent event) {
-        System.out.println("WordsQuery!");
-        label.setText("Version 0.1");
+  
+    @FXML
+    private void AddToListReleased(MouseEvent event) {
+    //TODO: Get incorrect answers added to Results word list
+        AddToList.setVisible(false);
     }
     
-    @FXML
-    private void handleFromLanguageChoice(MouseEvent event) {
-    //TODO: Get language settings from Google Translate
-    }
-
-    @FXML
-    private void handleToLanguageChoice(MouseEvent event) {
-    //TODO: Get language settings from Google Translate    
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         ToLanguage.setItems(FXCollections.observableArrayList("English", "Swedish", "Finnish"));
@@ -134,7 +128,7 @@ public class FXMLController implements Initializable {
             ToLanguage.getSelectionModel().getSelectedItem().toString(), FromWord.getText());
             String AnswerText=ToWord.getText();
             Results r = new Results(ResultData, ResultTextArea);
-            if(r.CheckResult(result, ToWord.getText()))
+            if(r.CheckResult(result, FromWord.getText(), ToWord.getText()))
             {
                 ToWord.setStyle("-fx-text-inner-color: green;");
                 String s="'"+AnswerText+"' is correct!";
@@ -143,17 +137,16 @@ public class FXMLController implements Initializable {
             }  
             else
             {
+                AddToList.setVisible(true);
                 ToWord.setStyle("-fx-text-inner-color: red;");
                 System.out.println("result="+result);
                 System.out.println("from="+FromWord.getText()); 
                 if(FromWord.getText().equals(result)){
                     String s="No word for '"+result+"'";
                     ToWord.setText(s);
-                    
                 }
                 else
                 {
-                    
                    String s="'"+AnswerText+"' is wrong! corect answer is '"+result+"'";
                    ToWord.setText(s);
                    r.SaveResult(FromWord.getText(),AnswerText, false);
