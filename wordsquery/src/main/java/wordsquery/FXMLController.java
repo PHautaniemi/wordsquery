@@ -79,8 +79,11 @@ public class FXMLController implements Initializable {
     private ListView<?> ResultTextArea;
     @FXML
     private Button AddOwnToList;
+    @FXML
+    private Button AddAnswerToList;
     
     String AnswerText;
+    String result;
     public static int ResultIndex;
     public static ObservableList ResultData = FXCollections.observableArrayList();
     
@@ -91,8 +94,29 @@ public class FXMLController implements Initializable {
     @FXML
     private void AddOwnToListReleased(MouseEvent event) {
         Results r = new Results(ResultData, ResultTextArea);
-        r.SaveResult(FromWord.getText(),AnswerText, true);
+        r.SaveResult(FromWord.getText(), AnswerText, true);
+        setFocus();
+    }
+    
+    /**
+    * This method enables user to add the translate returned 
+    * word to Results list when own word was not correct. 
+    * Button is visible only when this is needed.
+    */
+    @FXML
+    private void AddAnswerToListReleased(MouseEvent event) {
+        Results r = new Results(ResultData, ResultTextArea);
+        r.SaveResult(FromWord.getText(), result, true);
+        setFocus();
+    }
+    
+    /**
+    * This method moves focus back to FromWord text box and
+    * also hide buttons.
+    */
+    public void setFocus() {
         AddOwnToList.setVisible(false);
+        AddAnswerToList.setVisible(false);
         FromWord.requestFocus();
     }
     
@@ -130,7 +154,7 @@ public class FXMLController implements Initializable {
         if (event.getCode() == KeyCode.ENTER)
         {
             Translation t = new Translation();
-            String result=t.Translate(FromLanguage.getSelectionModel().getSelectedItem().toString(),
+            result=t.Translate(FromLanguage.getSelectionModel().getSelectedItem().toString(),
             ToLanguage.getSelectionModel().getSelectedItem().toString(), FromWord.getText());
             AnswerText=ToWord.getText();
             Results r = new Results(ResultData, ResultTextArea);
@@ -140,7 +164,7 @@ public class FXMLController implements Initializable {
                 String s="'"+AnswerText+"' is correct!";
                 ToWord.setText(s);
                 r.SaveResult(FromWord.getText(),AnswerText, true);
-                FromWord.requestFocus();
+                setFocus();
             }  
             else
             {
@@ -156,8 +180,8 @@ public class FXMLController implements Initializable {
                 {
                    String s="'"+AnswerText+"' is wrong! corect answer is '"+result+"'";
                    ToWord.setText(s);
-                   // r.SaveResult(FromWord.getText(),AnswerText, false);
                    AddOwnToList.setVisible(true);
+                   AddAnswerToList.setVisible(true);
                 }
             }
         
