@@ -42,7 +42,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Sphere;
 import javafx.scene.text.Font;
 import javafx.collections.ObservableList;
 
@@ -70,8 +69,6 @@ public class FXMLController implements Initializable {
     @FXML
     private TextField ToWord;
     @FXML
-    private Sphere VerdictLamp;
-    @FXML
     private Color x4;
     @FXML
     private Font x3;
@@ -95,6 +92,7 @@ public class FXMLController implements Initializable {
     private void AddOwnToListReleased(MouseEvent event) {
         Results r = new Results(ResultData, ResultTextArea);
         r.SaveResult(FromWord.getText(), AnswerText, true);
+        FromWord.setText(null);
         setFocus();
     }
     
@@ -107,6 +105,7 @@ public class FXMLController implements Initializable {
     private void AddAnswerToListReleased(MouseEvent event) {
         Results r = new Results(ResultData, ResultTextArea);
         r.SaveResult(FromWord.getText(), result, true);
+        FromWord.setText(null);
         setFocus();
     }
     
@@ -117,6 +116,7 @@ public class FXMLController implements Initializable {
     public void setFocus() {
         AddOwnToList.setVisible(false);
         AddAnswerToList.setVisible(false);
+        ToWord.setText(null);
         FromWord.requestFocus();
     }
     
@@ -128,7 +128,7 @@ public class FXMLController implements Initializable {
         FromLanguage.getSelectionModel().selectFirst();
     
         ResultIndex=0;
-        ResultTextArea.setPrefSize(200, 250);
+        //ResultTextArea.setPrefSize(200, 250);
         
         
        // ResultTextArea.appendText("                Query Results              \n");
@@ -140,6 +140,7 @@ public class FXMLController implements Initializable {
     private void FromWordKeyPressed(KeyEvent event) {
         
         ToWord.setText("");
+        setFocus();
         if (event.getCode() == KeyCode.ENTER)
         {
               System.out.println("ENTER");
@@ -151,6 +152,8 @@ public class FXMLController implements Initializable {
     private void ToWordKeyPressed(KeyEvent event) {
  
         ToWord.setStyle("-fx-text-inner-color: black;");
+        AddOwnToList.setVisible(false);
+        AddAnswerToList.setVisible(false);
         if (event.getCode() == KeyCode.ENTER)
         {
             Translation t = new Translation();
@@ -161,9 +164,8 @@ public class FXMLController implements Initializable {
             if(r.CheckResult(result, FromWord.getText(), ToWord.getText()))
             {
                 ToWord.setStyle("-fx-text-inner-color: green;");
-                String s="'"+AnswerText+"' is correct!";
-                ToWord.setText(s);
                 r.SaveResult(FromWord.getText(),AnswerText, true);
+                FromWord.setText(null);
                 setFocus();
             }  
             else

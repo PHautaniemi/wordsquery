@@ -51,37 +51,36 @@
         </Menu>
       </menus>
     </MenuBar>
-    <SplitPane fx:id="MainVertSplitPane" dividerPositions="0.2505567928730512" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+    <SplitPane fx:id="MainVertSplitPane" dividerPositions="0.3" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" styleClass="background" VBox.vgrow="ALWAYS">
       <items>
-        <AnchorPane>
-          <children>
-            <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" minWidth="60.0" prefHeight="27.0" prefWidth="180.0" style="&#10;" text="WordQuery Results" textAlignment="CENTER" wrapText="false">
-              <font>
-                <Font size="18.0" fx:id="x1" />
-              </font>
-              <textFill>
-                <Color blue="0.624" green="0.624" red="0.624" fx:id="x2" />
-              </textFill>
-            </Label>
-                  <ListView fx:id="ResultTextArea" layoutY="44.0" prefHeight="502.0" prefWidth="222.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="44.0" />
-          </children>
-        </AnchorPane>
-        <ScrollPane prefHeight="-1.0" prefWidth="-1.0">
-          <content>
-            <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="545.0" prefWidth="669.0">
-              <children>
-                <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" textAlignment="CENTER" textFill="$x2" wrapText="false" />
-                        <TextField fx:id="FromWord" layoutX="16.0" layoutY="118.0" onKeyPressed="#FromWordKeyPressed" prefHeight="16.0" prefWidth="305.0" promptText="Query" />
-                        <TextField fx:id="ToWord" layoutX="348.0" layoutY="118.0" onKeyPressed="#ToWordKeyPressed" prefHeight="16.0" prefWidth="307.0" promptText="Answer" />
-                        <ChoiceBox fx:id="FromLanguage" layoutX="16.0" layoutY="93.0" prefWidth="150.0" />
-                        <ChoiceBox fx:id="ToLanguage" layoutX="505.0" layoutY="93.0" prefWidth="150.0" />
-                        <Sphere fx:id="VerdictLamp" layoutX="268.0" layoutY="51.0" opacity="0.71" radius="10.0" />
-                        <Button fx:id="AddOwnToList" layoutX="348.0" layoutY="160.0" mnemonicParsing="false" onMouseReleased="#AddOwnToListReleased" text="Add to list" visible="false" />
-                        <Button fx:id="AddAnswerToList" layoutX="567.0" layoutY="160.0" mnemonicParsing="false" onMouseReleased="#AddAnswerToListReleased" text="Answer to list" visible="false" />
-              </children>
-            </AnchorPane>
-          </content>
-        </ScrollPane>
+            <ScrollPane fitToHeight="true" fitToWidth="true" minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="-Infinity" prefHeight="551.0" prefWidth="205.0" styleClass="background">
+                     <children>
+                  <Label alignment="CENTER" minWidth="60.0" prefHeight="54.0" prefWidth="204.0" style="&#10;" text="WordsQuery Results" textAlignment="CENTER" wrapText="false">
+                    <font>
+                      <Font size="18.0" fx:id="x1" />
+                    </font>
+                    <textFill>
+                      <Color blue="0.624" green="0.624" red="0.624" fx:id="x2" />
+                    </textFill>
+                  </Label>
+                        <ListView fx:id="ResultTextArea" opacity="0.5" prefHeight="505.0" prefWidth="200.0" AnchorPane.bottomAnchor="-6.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="53.0" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </ScrollPane>
+      <AnchorPane id="Content" minWidth="-1.0" prefHeight="552.0" prefWidth="670.0" styleClass="background">
+        <children>
+          <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" textAlignment="CENTER" textFill="$x2" wrapText="false" />
+                  <TextField fx:id="FromWord" layoutX="16.0" layoutY="118.0" onKeyPressed="#FromWordKeyPressed" prefHeight="42.0" prefWidth="305.0" promptText="Query" styleClass="textfield" />
+                  <TextField fx:id="ToWord" layoutX="348.0" layoutY="118.0" onKeyPressed="#ToWordKeyPressed" prefHeight="42.0" prefWidth="307.0" promptText="Answer" styleClass="textfield" />
+                  <ChoiceBox fx:id="FromLanguage" layoutX="16.0" layoutY="93.0" prefWidth="150.0" />
+                  <ChoiceBox fx:id="ToLanguage" layoutX="505.0" layoutY="93.0" prefWidth="150.0" />
+                  <Button fx:id="AddOwnToList" layoutX="348.0" layoutY="160.0" mnemonicParsing="false" onMouseReleased="#AddOwnToListReleased" prefHeight="25.0" prefWidth="100.0" text="Add to list" visible="false" />
+                  <Button fx:id="AddAnswerToList" layoutX="555.0" layoutY="160.0" mnemonicParsing="false" onMouseReleased="#AddAnswerToListReleased" prefHeight="25.0" prefWidth="100.0" text="Answer to list" visible="false" />
+        </children>
+      </AnchorPane>
       </items>
     </SplitPane>
     <HBox id="HBox" alignment="CENTER_LEFT" spacing="5.0" VBox.vgrow="NEVER">

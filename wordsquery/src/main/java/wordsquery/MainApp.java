@@ -35,6 +35,7 @@ public class MainApp extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/MainQueryPane.fxml"));
         
         Scene scene = new Scene(root);
+        //scene.getStylesheets().add(wordsquery.MainApp.class.getResource("/styles/Styles.css").toExternalForm());
         scene.getStylesheets().add("/styles/Styles.css");
         
         stage.setTitle("WordsQuery");

@@ -1,3 +1,11 @@
 .button {
     -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-background-color: rgba(0,205,205,0.7);
+}
+.background {
+    -fx-background-color: linear-gradient(#409080, darkgray, forestgreen);
+}
+.textfield {
+    -fx-font-size: 16px;
 }
