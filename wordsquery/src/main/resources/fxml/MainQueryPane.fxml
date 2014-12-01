@@ -51,7 +51,7 @@
         </Menu>
       </menus>
     </MenuBar>
-    <SplitPane fx:id="MainVertSplitPane" dividerPositions="0.3" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" styleClass="background" VBox.vgrow="ALWAYS">
+    <SplitPane fx:id="MainVertSplitPane" dividerPositions="0.267260579064588" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" styleClass="background" VBox.vgrow="ALWAYS">
       <items>
             <ScrollPane fitToHeight="true" fitToWidth="true" minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0">
               <content>
@@ -66,11 +66,16 @@
                     </textFill>
                   </Label>
                         <ListView fx:id="ResultTextArea" opacity="0.5" prefHeight="505.0" prefWidth="200.0" AnchorPane.bottomAnchor="-6.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="53.0" />
+                        <Button fx:id="ClearButton" layoutX="191.0" layoutY="15.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="32.0" text="Clear" onMouseClicked="#ClearAllResults" >
+                           <padding>
+                              <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                           </padding>
+                        </Button>
                      </children>
                   </AnchorPane>
               </content>
             </ScrollPane>
-      <AnchorPane id="Content" minWidth="-1.0" prefHeight="552.0" prefWidth="670.0" styleClass="background">
+      <AnchorPane id="Content" minWidth="-1.0" prefHeight="552.0" prefWidth="633.0" styleClass="background">
         <children>
           <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" textAlignment="CENTER" textFill="$x2" wrapText="false" />
                   <TextField fx:id="FromWord" layoutX="16.0" layoutY="118.0" onKeyPressed="#FromWordKeyPressed" prefHeight="42.0" prefWidth="305.0" promptText="Query" styleClass="textfield" />
