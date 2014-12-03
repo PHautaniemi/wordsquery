@@ -80,6 +80,8 @@ public class FXMLController implements Initializable {
     private Button AddOwnToList;
     @FXML
     private Button AddAnswerToList;
+    @FXML
+    private Button ClearButton;
     
     String AnswerText;
     String result;
@@ -139,7 +141,22 @@ public class FXMLController implements Initializable {
         AddAnswerToList.setVisible(false);
         ToWord.setText(null);
         FromWord.requestFocus();
+        }
+    
+    /**
+    * This method clears the collected word list
+    */
+    @FXML
+    public void ClearAllResults(MouseEvent event) {
+        Results r = new Results(ResultData, ResultTextArea);    
+        try {
+            r.ClearResults();
+        }
+        catch (RuntimeException exception) {
+        }
+        
     }
+    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {

@@ -36,14 +36,23 @@ public class Results{
      ObservableList ResultData;
      int ResultIndex;
      ListView ResultTextArea;
+     public static boolean ListCleared;
      
      Results(ObservableList Results,ListView List)
      {
+//        this.ListCleared = false;
         ResultData=Results;
         ResultTextArea=List;  
      }
      public void SaveResult(String QueryWord, String AnswerWord, boolean Result){ 
         
+         /* If result list has just been cleared, remove the comment set with
+            ClearResults from first index. Also ResultData.clear(); could be used
+            but removing first index is sufficient */
+         if ( getClearedValue() ) {
+             ResultData.remove(0);
+             setClearedValue(false);
+         }
          String s=QueryWord+" -> "+AnswerWord+"\n";
          final Text t = TextBuilder.create()
             .text(s)
@@ -59,6 +68,21 @@ public class Results{
          }    
          ResultData.add(t);
          ResultTextArea.setItems(ResultData);
+     }
+     public void ClearResults() {
+     
+         ResultData.clear();
+         String s=" You emptied the query results.. ";
+         ResultData.add(s);
+         ResultTextArea.setItems(ResultData);
+         setClearedValue(true);     
+     }
+     
+     public void setClearedValue(Boolean b) {  
+      this.ListCleared = b;  
+     } 
+     public Boolean getClearedValue(){
+     return this.ListCleared;
      }
      public boolean CheckResult(String TranslatedWord, String FromWord, String ToWord){
          if(TranslatedWord.equals(ToWord))
