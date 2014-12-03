@@ -21,14 +21,16 @@ package wordsquery;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.SplitPane;
@@ -39,11 +41,11 @@ import javafx.scene.control.TreeTableView;
 import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import javafx.collections.ObservableList;
 
 public class FXMLController implements Initializable {
     
@@ -83,6 +85,25 @@ public class FXMLController implements Initializable {
     String result;
     public static int ResultIndex;
     public static ObservableList ResultData = FXCollections.observableArrayList();
+
+    /**
+    * TODO
+    */
+    @FXML
+    private void menuQuit() {
+        System.out.println("menu clicked");
+        Platform.exit();
+    }
+
+    /**
+    * TODO
+    */
+    @FXML
+    private void menuAbout() {
+        InfoDialog dlg = new InfoDialog();
+        dlg.setProperties("About Words Query");
+        dlg.showAndWait();
+    }
     
     /**
     * This method enables user to add different word to Results list 

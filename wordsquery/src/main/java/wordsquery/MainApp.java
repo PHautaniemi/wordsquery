@@ -27,7 +27,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-
 public class MainApp extends Application {
 
     @Override
@@ -37,7 +36,6 @@ public class MainApp extends Application {
         Scene scene = new Scene(root);
         //scene.getStylesheets().add(wordsquery.MainApp.class.getResource("/styles/Styles.css").toExternalForm());
         scene.getStylesheets().add("/styles/Styles.css");
-        
         stage.setTitle("WordsQuery");
         stage.setScene(scene);
         stage.show();
