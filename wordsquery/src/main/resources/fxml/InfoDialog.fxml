@@ -7,10 +7,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="200" prefWidth="320" styleClass="background" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AnchorPane" prefHeight="200" prefWidth="320" styleClass="background" stylesheets="@../styles/Styles.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <Button fx:id="Close" layoutX="230.0" layoutY="153.0" onAction="#InfoDialogClose" text="Close" />
-        <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
-      <TextFlow layoutX="60.0" prefHeight="200.0" prefWidth="200.0" />
+      <Button layoutX="230.0" layoutY="153.0" onAction="#InfoDialogClose" text="Close" AnchorPane.bottomAnchor="22.0" />
+      <TextField fx:id="InfoText" layoutX="67.0" prefHeight="200.0" prefWidth="149.0" styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
     </children>
 </AnchorPane>

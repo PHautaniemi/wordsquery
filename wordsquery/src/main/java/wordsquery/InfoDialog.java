@@ -27,15 +27,20 @@ import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 /**
- * TODO
+ * Base class for FXML info dialogs. Tailored usage of the dialog
+ * can be done with setProperties method.
  * 
  */
 public class InfoDialog extends Stage {
 
+    @FXML
+    private TextField InfoText;
  
     public InfoDialog() {
         this.loadFXML();
@@ -44,20 +49,30 @@ public class InfoDialog extends Stage {
 
     @FXML
     public void InfoDialogClose(ActionEvent event) {
+        System.out.println("InfoDialogClose ActionEvent");
         this.hide();
     }
     
     private void loadFXML() {
         FXMLLoader loader = new FXMLLoader();
         loader.setController(this);
-        loader.setLocation(getClass().getResource("/fxml/InfoDialog.fxml"));
+        loader.setLocation(this.getClass().getResource("/fxml/InfoDialog.fxml"));
         try {
             setScene(new Scene((Parent) loader.load()));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
-    public void setProperties (String title) {
+
+    /**
+    * setProperties method makes the title text and text field to have
+    * values defined by the caller.
+    * 
+    * @param title
+    * @param text
+    */
+    public void setProperties (String title, String text) {
         this.setTitle(title);
+        InfoText.setText(text);
     }
 }

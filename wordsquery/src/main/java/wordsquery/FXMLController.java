@@ -89,7 +89,7 @@ public class FXMLController implements Initializable {
     public static ObservableList ResultData = FXCollections.observableArrayList();
 
     /**
-    * TODO
+    * menuQuit method that calls exit()
     */
     @FXML
     private void menuQuit() {
@@ -98,12 +98,12 @@ public class FXMLController implements Initializable {
     }
 
     /**
-    * TODO
+    * menuAbout method that invokes InfoDialog with about texts
     */
     @FXML
     private void menuAbout() {
         InfoDialog dlg = new InfoDialog();
-        dlg.setProperties("About Words Query");
+        dlg.setProperties("About Words Query", "WordsQuery version 0.5");
         dlg.showAndWait();
     }
     
