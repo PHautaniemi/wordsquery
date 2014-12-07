@@ -49,7 +49,6 @@ public class InfoDialog extends Stage {
 
     @FXML
     public void InfoDialogClose(ActionEvent event) {
-        System.out.println("InfoDialogClose ActionEvent");
         this.hide();
     }
     
