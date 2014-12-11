@@ -9,3 +9,8 @@
 .textfield {
     -fx-font-size: 16px;
 }
+
+.text-area .content {
+    -fx-background-color: linear-gradient(#409080, darkgray, forestgreen);
+    -fx-text-origin: baseline;
+}

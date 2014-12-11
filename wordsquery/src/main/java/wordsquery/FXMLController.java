@@ -24,25 +24,18 @@ import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.SplitPane;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TreeTableColumn;
-import javafx.scene.control.TreeTableView;
-import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -98,6 +91,149 @@ public class FXMLController implements Initializable {
     }
 
     /**
+    * menuNew method that invokes InfoDialog with texts
+    */
+    @FXML
+    private void menuNew() {
+        InfoDialog dlg = new InfoDialog();
+        dlg.setProperties("Menu New functionality", 
+        "Not implemented yet. Invokes new chapter.");
+        dlg.showAndWait();
+    }
+
+    /**
+    * menuOpen method that invokes InfoDialog with texts
+    */
+    @FXML
+    private void menuOpen() {
+        InfoDialog dlg = new InfoDialog();
+        dlg.setProperties("Menu Open functionality", 
+        "Not implemented yet. Opens saved chapter.");
+        dlg.showAndWait();
+    }
+
+    /**
+    * menuOpenRecent method that invokes InfoDialog with texts
+    */
+    @FXML
+    private void menuOpenRecent() {
+        InfoDialog dlg = new InfoDialog();
+        dlg.setProperties("Menu Open Recent functionality", 
+        "Not implemented yet. Open list of recently saved chapters.");
+        dlg.showAndWait();
+    }
+
+    /**
+    * menuClose method that invokes InfoDialog with texts
+    */
+    @FXML
+    private void menuClose() {
+        InfoDialog dlg = new InfoDialog();
+        dlg.setProperties("Menu Close functionality", 
+        "Not implemented yet. Closes chapter without save.");
+        dlg.showAndWait();
+    }
+
+    /**
+    * menuSave method that invokes InfoDialog with texts
+    */
+    @FXML
+    private void menuSave() {
+        InfoDialog dlg = new InfoDialog();
+        dlg.setProperties("Menu Save functionality", 
+        "Not implemented yet. Save named chapter with words.");
+        dlg.showAndWait();
+    }
+
+    /**
+    * menuSaveAs method that invokes InfoDialog with texts
+    */
+    @FXML
+    private void menuSaveAs() {
+        InfoDialog dlg = new InfoDialog();
+        dlg.setProperties("Menu Save As functionality", 
+        "Not implemented yet. Save chapter with different name or formats");
+        dlg.showAndWait();
+    }
+
+    /**
+    * menuUndo method that invokes InfoDialog with texts
+    */
+    @FXML
+    private void menuUndo() {
+        InfoDialog dlg = new InfoDialog();
+        dlg.setProperties("Menu Undo functionality", 
+        "Not implemented yet. Undo the last change.");
+        dlg.showAndWait();
+    }
+
+    /**
+    * menuRedo method that invokes InfoDialog with texts
+    */
+    @FXML
+    private void menuRedo() {
+        InfoDialog dlg = new InfoDialog();
+        dlg.setProperties("Menu Redo functionality", 
+        "Not implemented yet. Redo last undo.");
+        dlg.showAndWait();
+    }
+
+    /**
+    * menuCut method that invokes InfoDialog with texts
+    */
+    @FXML
+    private void menuCut() {
+        InfoDialog dlg = new InfoDialog();
+        dlg.setProperties("Menu Cut functionality", 
+        "Not implemented yet. Removes selection with cut function.");
+        dlg.showAndWait();
+    }
+
+    /**
+    * menuCopy method that invokes InfoDialog with texts
+    */
+    @FXML
+    private void menuCopy() {
+        InfoDialog dlg = new InfoDialog();
+        dlg.setProperties("Menu Copy functionality", 
+        "Not implemented yet. Copies selected text.");
+        dlg.showAndWait();
+    }
+
+    /**
+    * menuPaste method that invokes InfoDialog with texts
+    */
+    @FXML
+    private void menuPaste() {
+        InfoDialog dlg = new InfoDialog();
+        dlg.setProperties("Menu Paste functionality", 
+        "Not implemented yet. Paste the copied text.");
+        dlg.showAndWait();
+    }
+
+    /**
+    * menuDelete method that invokes InfoDialog with texts
+    */
+    @FXML
+    private void menuDelete() {
+        InfoDialog dlg = new InfoDialog();
+        dlg.setProperties("Menu Delete functionality", 
+        "Not implemented yet. Delete the selected text.");
+        dlg.showAndWait();
+    }
+
+    /**
+    * menuCopy method that invokes InfoDialog with texts
+    */
+    @FXML
+    private void menuSelectAll() {
+        InfoDialog dlg = new InfoDialog();
+        dlg.setProperties("Menu Select All functionality", 
+        "Not implemented yet. Selects all text in area.");
+        dlg.showAndWait();
+    }
+
+    /**
     * menuAbout method that invokes InfoDialog with about texts
     */
     @FXML
@@ -106,7 +242,6 @@ public class FXMLController implements Initializable {
         dlg.setProperties("About Words Query", "WordsQuery version 0.5");
         dlg.showAndWait();
     }
-    
     /**
     * This method enables user to add different word to Results list 
     * than translate returned. Button is visible only when this is needed.

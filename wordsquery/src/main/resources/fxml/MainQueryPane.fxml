@@ -17,16 +17,13 @@
       <menus>
         <Menu mnemonicParsing="false" text="File">
           <items>
-            <MenuItem mnemonicParsing="false" text="New" />
-            <MenuItem mnemonicParsing="false" text="Open…" />
-            <Menu mnemonicParsing="false" text="Open Recent" />
+            <MenuItem mnemonicParsing="false" onAction="#menuNew" text="New" />
+            <MenuItem mnemonicParsing="false" onAction="#menuOpen" text="Open…" />
+            <Menu mnemonicParsing="false" onAction="#menuOpenRecent" text="Open Recent" />
             <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Close" />
-            <MenuItem mnemonicParsing="false" text="Save" />
-            <MenuItem mnemonicParsing="false" text="Save As…" />
-            <MenuItem mnemonicParsing="false" text="Revert" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Preferences…" />
+            <MenuItem mnemonicParsing="false" onAction="#menuClose" text="Close" />
+            <MenuItem mnemonicParsing="false" onAction="#menuSave" text="Save" />
+            <MenuItem mnemonicParsing="false" onAction="#menuSaveAs" text="Save As…" />
             <SeparatorMenuItem mnemonicParsing="false" />
             <MenuItem mnemonicParsing="false" onAction="#menuQuit" text="Quit">
                      <accelerator>
@@ -36,21 +33,20 @@
         </Menu>
         <Menu mnemonicParsing="false" text="Edit">
           <items>
-            <MenuItem mnemonicParsing="false" text="Undo" />
-            <MenuItem mnemonicParsing="false" text="Redo" />
+            <MenuItem mnemonicParsing="false" onAction="#menuUndo" text="Undo" />
+            <MenuItem mnemonicParsing="false" onAction="#menuRedo" text="Redo" />
             <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Cut" />
-            <MenuItem mnemonicParsing="false" text="Copy" />
-            <MenuItem mnemonicParsing="false" text="Paste" />
-            <MenuItem mnemonicParsing="false" text="Delete" />
+            <MenuItem mnemonicParsing="false" onAction="#menuCut" text="Cut" />
+            <MenuItem mnemonicParsing="false" onAction="#menuCopy" text="Copy" />
+            <MenuItem mnemonicParsing="false" onAction="#menuPaste" text="Paste" />
+            <MenuItem mnemonicParsing="false" onAction="#menuDelete" text="Delete" />
             <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Select All" />
-            <MenuItem mnemonicParsing="false" text="Unselect All" />
+            <MenuItem mnemonicParsing="false" onAction="#menuSelectAll" text="Select All" />
           </items>
         </Menu>
         <Menu mnemonicParsing="false" text="Help">
           <items>
-            <MenuItem fx:id="About" mnemonicParsing="false" onAction="#menuAbout" text="About MyHelloApp" />
+            <MenuItem fx:id="About" mnemonicParsing="false" onAction="#menuAbout" text="About WordsQuery" />
           </items>
         </Menu>
       </menus>
@@ -70,7 +66,7 @@
                     </textFill>
                   </Label>
                         <ListView fx:id="ResultTextArea" opacity="0.5" prefHeight="505.0" prefWidth="200.0" AnchorPane.bottomAnchor="-6.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="53.0" />
-                        <Button fx:id="ClearButton" layoutX="191.0" layoutY="15.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="32.0" text="Clear" onMouseClicked="#ClearAllResults" >
+                        <Button fx:id="ClearButton" layoutX="191.0" layoutY="15.0" mnemonicParsing="false" onMouseClicked="#ClearAllResults" prefHeight="22.0" prefWidth="32.0" text="Clear">
                            <padding>
                               <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                            </padding>

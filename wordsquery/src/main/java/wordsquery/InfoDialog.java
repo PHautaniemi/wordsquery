@@ -24,11 +24,12 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import java.io.IOException;
+import java.util.stream.IntStream;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.scene.control.TextArea;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -40,7 +41,7 @@ import javafx.stage.Stage;
 public class InfoDialog extends Stage {
 
     @FXML
-    private TextField InfoText;
+    private TextArea InfoText;
  
     public InfoDialog() {
         this.loadFXML();
