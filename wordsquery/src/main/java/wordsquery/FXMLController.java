@@ -78,8 +78,8 @@ public class FXMLController implements Initializable {
     
     String AnswerText;
     String result;
-    public static int ResultIndex;
     public static ObservableList ResultData = FXCollections.observableArrayList();
+    Results chapterResults;
 
     /**
     * menuQuit method that calls exit()
@@ -140,6 +140,7 @@ public class FXMLController implements Initializable {
     @FXML
     private void menuSave() {
         InfoDialog dlg = new InfoDialog();
+        
         dlg.setProperties("Menu Save functionality", 
         "Not implemented yet. Save named chapter with words.");
         dlg.showAndWait();
@@ -248,8 +249,7 @@ public class FXMLController implements Initializable {
     */
     @FXML
     private void AddOwnToListReleased(MouseEvent event) {
-        Results r = new Results(ResultData, ResultTextArea);
-        r.SaveResult(FromWord.getText(), AnswerText, true);
+        chapterResults.SaveResult(FromWord.getText(), AnswerText, true);
         FromWord.setText(null);
         setFocus();
     }
@@ -261,8 +261,7 @@ public class FXMLController implements Initializable {
     */
     @FXML
     private void AddAnswerToListReleased(MouseEvent event) {
-        Results r = new Results(ResultData, ResultTextArea);
-        r.SaveResult(FromWord.getText(), result, true);
+        chapterResults.SaveResult(FromWord.getText(), result, true);
         FromWord.setText(null);
         setFocus();
     }
@@ -283,9 +282,8 @@ public class FXMLController implements Initializable {
     */
     @FXML
     public void ClearAllResults(MouseEvent event) {
-        Results r = new Results(ResultData, ResultTextArea);    
         try {
-            r.ClearResults();
+            chapterResults.ClearResults();
         }
         catch (RuntimeException exception) {
         }
@@ -300,13 +298,7 @@ public class FXMLController implements Initializable {
         ToLanguage.getSelectionModel().selectFirst();
         FromLanguage.getSelectionModel().selectFirst();
     
-        ResultIndex=0;
-        //ResultTextArea.setPrefSize(200, 250);
-        
-        
-       // ResultTextArea.appendText("                Query Results              \n");
-       // ResultTextArea.appendText("\n");
-        
+        chapterResults = new Results(ResultData, ResultTextArea);
     }    
 
     @FXML
@@ -333,11 +325,10 @@ public class FXMLController implements Initializable {
             result=t.Translate(FromLanguage.getSelectionModel().getSelectedItem().toString(),
             ToLanguage.getSelectionModel().getSelectedItem().toString(), FromWord.getText());
             AnswerText=ToWord.getText();
-            Results r = new Results(ResultData, ResultTextArea);
-            if(r.CheckResult(result, FromWord.getText(), ToWord.getText()))
+            if(chapterResults.CheckResult(result, FromWord.getText(), ToWord.getText()))
             {
                 ToWord.setStyle("-fx-text-inner-color: green;");
-                r.SaveResult(FromWord.getText(),AnswerText, true);
+                chapterResults.SaveResult(FromWord.getText(),AnswerText, true);
                 FromWord.setText(null);
                 setFocus();
             }  

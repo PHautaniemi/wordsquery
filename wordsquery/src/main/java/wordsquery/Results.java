@@ -27,22 +27,24 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextBuilder;
+
 /**
- *
- * @author saaritim
+ * Results Class is responsible of handling list or words that are added in
+ * ResultData.
+ * 
  */
 public class Results{
    
      ObservableList ResultData;
      int ResultIndex;
      ListView ResultTextArea;
-     public static boolean ListCleared;
+     private boolean ListCleared;
      
      Results(ObservableList Results,ListView List)
      {
-//        this.ListCleared = false;
-        ResultData=Results;
-        ResultTextArea=List;  
+        ResultIndex=0;
+        ResultData = Results;
+        ResultTextArea = List;
      }
      public void SaveResult(String QueryWord, String AnswerWord, boolean Result){ 
         
@@ -75,7 +77,7 @@ public class Results{
          String s=" You emptied the query results.. ";
          ResultData.add(s);
          ResultTextArea.setItems(ResultData);
-         setClearedValue(true);     
+         setClearedValue(true);
      }
      
      public void setClearedValue(Boolean b) {  
