@@ -19,6 +19,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 package wordsquery;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
@@ -80,6 +81,7 @@ public class FXMLController implements Initializable {
     String result;
     public static ObservableList ResultData = FXCollections.observableArrayList();
     Results chapterResults;
+    ConfXMLHandler confHandler;
 
     /**
     * menuQuit method that calls exit()
@@ -106,6 +108,8 @@ public class FXMLController implements Initializable {
     */
     @FXML
     private void menuOpen() {
+        File file = confHandler.openFile();
+        System.out.println(file);
         InfoDialog dlg = new InfoDialog();
         dlg.setProperties("Menu Open functionality", 
         "Not implemented yet. Opens saved chapter.");
@@ -139,8 +143,12 @@ public class FXMLController implements Initializable {
     */
     @FXML
     private void menuSave() {
+        File file = confHandler.getFilePath();
+        if (file != null) {
+            //File saved or opened once. Can continue with saving. 
+        }
+        System.out.println(file);
         InfoDialog dlg = new InfoDialog();
-        
         dlg.setProperties("Menu Save functionality", 
         "Not implemented yet. Save named chapter with words.");
         dlg.showAndWait();
@@ -299,6 +307,7 @@ public class FXMLController implements Initializable {
         FromLanguage.getSelectionModel().selectFirst();
     
         chapterResults = new Results(ResultData, ResultTextArea);
+        confHandler = new ConfXMLHandler();
     }    
 
     @FXML
