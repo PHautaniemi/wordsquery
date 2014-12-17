@@ -19,8 +19,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 package wordsquery;
 
 import java.io.File;
+import javafx.collections.ObservableList;
+import javafx.scene.control.ListView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Marshaller;
 
 /**
  * ConfXMLHandler Class handles the configuration and save configuration
@@ -61,4 +65,27 @@ public class ConfXMLHandler extends Stage {
        }
        return file;
     }
+
+   public void savePersonDataToFile(File file, Results results) {
+    try {
+        JAXBContext context = JAXBContext
+                .newInstance(Results.class);
+        Marshaller m = context.createMarshaller();
+        m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+
+        // Wrapping the data.
+        Results wrapper = results;
+        String data = wrapper.getResults();
+        System.out.println(data);
+
+        // Marshalling and saving XML to the file.
+        m.marshal(wrapper, file);
+        System.out.println(file);
+
+        // Save the file path to the registry.
+        //setPersonFilePath(file);
+    } catch (Exception e) { // catches ANY exception
+        System.out.println(e);
+    }
+}
 }

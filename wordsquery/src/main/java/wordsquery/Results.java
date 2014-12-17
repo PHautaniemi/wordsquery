@@ -27,25 +27,36 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextBuilder;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlElement;
 
 /**
  * Results Class is responsible of handling list or words that are added in
  * ResultData.
  * 
  */
+@XmlRootElement(name = "ResultTextArea")
 public class Results{
    
      ObservableList ResultData;
      int ResultIndex;
-     ListView ResultTextArea;
      private boolean ListCleared;
      
-     Results(ObservableList Results,ListView List)
+     Results(ObservableList Results)
      {
-        ResultIndex=0;
         ResultData = Results;
-        ResultTextArea = List;
      }
+     
+     Results()
+     {
+        ResultData = null;
+     }
+     
+     @XmlElement(name = "results")
+     public String getResults() {
+         return ResultData.toString();
+     }
+     
      public void SaveResult(String QueryWord, String AnswerWord, boolean Result){ 
         
          /* If result list has just been cleared, remove the comment set with
@@ -55,28 +66,14 @@ public class Results{
              ResultData.remove(0);
              setClearedValue(false);
          }
-         String s=QueryWord+" -> "+AnswerWord+"\n";
-         final Text t = TextBuilder.create()
-            .text(s)
-            .x(50).y(50)
-            .build(); 
-         if(Result)
-         {           
-             t.setFill(Color.GREEN);
-         }
-         else
-         {
-             t.setFill(Color.RED);
-         }    
-         ResultData.add(t);
-         ResultTextArea.setItems(ResultData);
+         String s=QueryWord+" -> "+AnswerWord;
+         ResultData.add(s);
      }
      public void ClearResults() {
      
          ResultData.clear();
          String s=" You emptied the query results.. ";
          ResultData.add(s);
-         ResultTextArea.setItems(ResultData);
          setClearedValue(true);
      }
      

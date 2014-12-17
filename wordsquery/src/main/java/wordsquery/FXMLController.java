@@ -69,7 +69,7 @@ public class FXMLController implements Initializable {
     @FXML
     private Font x3;
     @FXML
-    private ListView<?> ResultTextArea;
+    private ListView<String> ResultTextArea;
     @FXML
     private Button AddOwnToList;
     @FXML
@@ -79,7 +79,7 @@ public class FXMLController implements Initializable {
     
     String AnswerText;
     String result;
-    public static ObservableList ResultData = FXCollections.observableArrayList();
+    ObservableList<String> ResultData = FXCollections.observableArrayList();
     Results chapterResults;
     ConfXMLHandler confHandler;
 
@@ -112,7 +112,7 @@ public class FXMLController implements Initializable {
         System.out.println(file);
         InfoDialog dlg = new InfoDialog();
         dlg.setProperties("Menu Open functionality", 
-        "Not implemented yet. Opens saved chapter.");
+        "Not implemented yet real functionality where XML data is parsed to Results. Opens saved chapter.");
         dlg.showAndWait();
     }
 
@@ -145,12 +145,14 @@ public class FXMLController implements Initializable {
     private void menuSave() {
         File file = confHandler.getFilePath();
         if (file != null) {
-            //File saved or opened once. Can continue with saving. 
+            //File saved or opened once. Can continue with saving.
+            confHandler.savePersonDataToFile(file, chapterResults);
         }
         System.out.println(file);
         InfoDialog dlg = new InfoDialog();
         dlg.setProperties("Menu Save functionality", 
-        "Not implemented yet. Save named chapter with words.");
+        "Not fully implemented yet where all words are saved into XML file. "
+        + "Now all words are under one tag. Save named chapter with words.");
         dlg.showAndWait();
     }
 
@@ -283,6 +285,7 @@ public class FXMLController implements Initializable {
         AddAnswerToList.setVisible(false);
         ToWord.setText(null);
         FromWord.requestFocus();
+        ResultTextArea.setItems(ResultData);
         }
     
     /**
@@ -306,7 +309,7 @@ public class FXMLController implements Initializable {
         ToLanguage.getSelectionModel().selectFirst();
         FromLanguage.getSelectionModel().selectFirst();
     
-        chapterResults = new Results(ResultData, ResultTextArea);
+        chapterResults = new Results(ResultData);
         confHandler = new ConfXMLHandler();
     }    
 
